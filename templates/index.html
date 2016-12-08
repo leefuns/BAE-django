@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% autoescape off %}
+
+{% block title %}
+    路漫求索--Home
+{% endblock %}
+
+{% block content %}
+            <!-- start web_body -->
+    <div class="row">
+            <!-- Left -->
+        <div class="col-md-8">
+            <!-- start post_content -->
+            {% for art in articles %}
+            <div class="media">
+                <a class="pull-left" href="post/{{ art.id }}">  <!-- pull-left pull-right向左向右浮动 -->
+                    <img class="media-object" src="uploads/{{ art.img }}" alt="...">
+                </a>
+                <div class="media-body bodysize">
+                    <h3 class="media-heading"><strong>{{ art.title }}</strong></h3>
+                    <h4>{{ art.desc }}</h4>
+                    <div class="authormargin">文 / Lee<span class="text-right">{{ art.time }}</span></div>
+                </div>
+            </div>
+
+            <!-- end post_content -->
+           <!-- start line -->
+            <hr class="feature-divider">
+            <!-- end line -->
+        {% endfor %}
+        </div>
+
+            <!-- Right -->
+        <div class="col-md-4 authorlineheight">
+            <img  class="img-circle img-responsive" alt="头像" src="{% static 'img/touxiang.jpg' %}"> 
+            <p class="text-center">Lee</p>
+            <p class="text-center">
+            <button type="button" class="btn btn-primary">Wechat</button>
+            <button type="button" class="btn btn-primary">Email</button>
+            <button type="button" class="btn btn-primary">Github</button>
+            </p>
+        </div>
+
+    </div>
+
+        <!-- end web_body -->
+{% endblock %}
+
+{% endautoescape %}

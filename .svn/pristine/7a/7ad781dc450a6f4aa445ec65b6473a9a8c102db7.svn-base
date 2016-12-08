@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{{ keywords }}" />
+    <meta name="description" content="{{ description }}" />
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+      <div class="container">
+       <!-- start web_header -->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+             　<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                 <span class="sr-only">Toggle Navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+               <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+               <a href="{% url 'home' %}" class="navbar-brand">路漫求索</a>
+          </div>
+          <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+          <div class="collapse navbar-collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'python' %}">Python</a></li>
+                  <li><a href="{% url 'notes' %}">Notes</a></li>
+                  <li><a href="{% url 'memo' %}">Memo</a></li>
+                  <li><a href="{% url 'share' %}">Share</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+              </ul>
+          </div>
+        </div>
+       <!-- end web_header -->
+       <!-- start line -->
+    <hr class="feature-divider">
+        <!-- end line -->
+    {% block content %}{% endblock %}
+           <!-- start line -->
+    <hr class="feature-divider">
+        <!-- end line -->
+
+       <!--  start web_footer -->
+       <div class="text-center">
+        <span>©2016 mtolee.com, All rights reserved.<br/>Developed using Django, Deployed in BAE<br/>Email : mtolee@hotmail.com</span>
+        </div>
+        <!--  end web_footer -->
+    </div>
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
